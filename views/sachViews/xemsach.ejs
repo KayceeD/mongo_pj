@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Quản lý sách</title>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main class="py-5">
+        <div class="container">
+            <div class="row">
+                <%- include('../partials/sidebar.ejs') %>
+                <div class="col-8">
+                    <div class="content">
+                        <h1>Danh sách sách</h1>
+                        <a class="btn btn-primary" style="margin-bottom: 10px;" href="/sach/themsach">Thêm sách</a>
+                        <table class="table table-bordered text-center">
+                            <tr>
+                                <th>Mã sách</th>
+                                <th>Tên sách</th>
+                                <th>Thể loại</th>
+                                <th>Mô tả</th>
+                                <th>Chức năng</th>
+                            </tr>
+                            <% books.map(item => { %>
+                                <tr>
+                                    <td><%=item.masach %></td>
+                                    <td><%=item.tensach %></td>
+                                    <td><%=item.theloai %></td>
+                                    <td><%=item.mota %></td>
+                                    <td><a class="btn btn-warning" href="/sach/suasach/<%= item._id %>">Sửa</a>
+                                    <a class="btn btn-danger" href="/sach/xoa/<%= item._id %>">Xóa</a></td>
+                                </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>
